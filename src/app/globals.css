@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --font-serif: var(--font-newsreader), 'Georgia', serif;
+  --font-sans: var(--font-outfit), var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+  --font-caveat: var(--font-caveat), cursive;
+  --font-dancing: var(--font-dancing-script), cursive;
+  --font-reenie: var(--font-reenie-beanie), cursive;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Drafting / Parchment Sepia Palette */
+  --color-bg-primary: #fbf9f4;
+  /* Parchment cream */
+  --color-bg-secondary: #faf6ee;
+  /* Lighter sheet paper */
+  --color-bg-tertiary: #f4ecdd;
+  /* Highlight sepia paper */
+  --color-text-primary: #12100e;
+  /* Charcoal print ink */
+  --color-text-secondary: #5a544e;
+  /* Graphite pencil */
+  --color-border-primary: #12100e;
+  /* Technical solid ink lines */
+  --color-brand-indigo: #cc5a37;
+  /* Terracotta drafting pencil orange */
+  --color-brand-indigo-light: rgba(204, 90, 55, 0.08);
+  --color-brand-danger: #a83232;
+  /* Crimson markup ink */
+  --color-brand-danger-light: rgba(168, 50, 50, 0.08);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 2px 2px 0px 0px #12100e;
+  /* Offset technical drawing shadow */
+  --shadow-lg: 4px 4px 0px 0px #12100e;
+  /* Thick offset neubrutalist shadow */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    /* Blueprint Slate Palette */
+    --color-bg-primary: #0a1118;
+    /* Deep blueprint navy */
+    --color-bg-secondary: #0f1a24;
+    /* Blueprint sheets */
+    --color-bg-tertiary: #192b3a;
+    /* Highlight dark grids */
+    --color-text-primary: #e6eff7;
+    /* Blueprint white/cyan lines */
+    --color-text-secondary: #90aabe;
+    /* Blueprint faded cyan label */
+    --color-border-primary: #3884b6;
+    /* Technical cyan ink */
+    --color-brand-indigo: #00e5ff;
+    /* Brilliant blueprint drawing cyan */
+    --color-brand-indigo-light: rgba(0, 229, 255, 0.08);
+    --color-brand-danger: #ef6b6b;
+    --color-brand-danger-light: rgba(239, 107, 107, 0.15);
+
+    --shadow-md: 2px 2px 0px 0px #e6eff7;
+    --shadow-lg: 4px 4px 0px 0px #e6eff7;
   }
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  image-rendering: pixelated;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* Custom Technical Drafting Elements */
+.draft-grid {
+  background-image:
+    linear-gradient(to right, var(--color-bg-tertiary) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-bg-tertiary) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.dark .draft-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Premium radial ambient glows */
+.ambient-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(204, 90, 55, 0.07) 0%, transparent 70%);
+}
+
+.dark-obsidian-page {
+  background-color: #0b0b0c;
+  color: #f3f3f3;
+  --color-bg-primary: #0b0b0c;
+  --color-bg-secondary: #121214;
+  --color-bg-tertiary: #1b1c20;
+  --color-text-primary: #f3f3f3;
+  --color-text-secondary: #9ea0a6;
+  --color-border-primary: #282a30;
+  --color-brand-indigo: #e2c079;
+  /* Warm premium gold accent */
+}
+
+/* Retro Stamp Style */
+.retro-stamp {
+  border: 3px double var(--color-brand-indigo);
+  transform: rotate(-3deg);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
 }
